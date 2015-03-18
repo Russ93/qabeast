@@ -1,0 +1,49 @@
+{
+  "name": "goportlightTesting",
+  "version": "0.14.1",
+  "authors": [
+    {
+      "name": "Russell Schlup",
+      "title": "Lead Web Developer",
+      "email": "portlight.rschlup@gmail.com"
+    },
+    {
+      "name": "Yiyang Song",
+      "title": "Senior Software Engineer",
+      "email": "portlight.ysong@gmail.com"
+    },
+    {
+      "name": "Nicole Carvalho",
+      "title": "Lead Front-End Developer",
+      "email": "portlight.ncarvalho@gmail.com"
+    },
+    {
+      "name": "Damasio Eli Gerena IV",
+      "title": "Web Developer",
+      "email": "portlight.dgerena@gmail.com"
+    },
+    {
+      "name": "Emmanuel Barreto  ",
+      "title": "Front-End Developer",
+      "email": "portlight.mbarreto@gmail.com"
+    },
+    {
+      "name": "Jairo Jurado",
+      "title": "Web Developer",
+      "email": "portlight.jjurado@gmail.com"
+    },
+    {
+      "name": "Pedro Poveda",
+      "title": "Web Developer",
+      "email": "portlight.ppoveda@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "async": "*",
+    "better-require": "0.0.3",
+    "coffee-script": "^1.9.1",
+    "sails-mysql": "*",
+    "waterline": "*",
+    "zombie": "*"
+  }
+}
