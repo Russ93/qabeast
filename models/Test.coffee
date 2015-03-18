@@ -1,14 +1,7 @@
 module.exports =
 
 	# Define a custom table name
-	'tableName': 'test'
 	'identity': 'test'
-
-	# Set schema true/false for adapters that support schemaless
-	'schema': true
-
-	# Define an adapter to use
-	'adapter': 'mysql'
 
 	'connection': 'myLocalMySql'
 
@@ -27,7 +20,12 @@ module.exports =
 		'visit':
 			'type': 'string'
 			'required': true
+		
 		# 'command': { 'model': 'command' },
 		'commands':
 			'collection': 'command'
+			'via': 'test_id'
+
+		'outcomes':
+			'collection': 'outcome'
 			'via': 'test_id'

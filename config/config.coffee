@@ -1,5 +1,5 @@
 module.exports =
-	'port': 3000
+	'http': 5000
 	'fileTypes': [
 		'.js'
 		'.coffee'

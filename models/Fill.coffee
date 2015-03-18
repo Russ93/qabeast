@@ -1,13 +1,7 @@
 module.exports =
 
 	# Define a custom table name
-	'tableName': 'fill'
-
-	# Set schema true/false for adapters that support schemaless
-	'schema': true
-
-	# Define an adapter to use
-	'adapter': 'mysql'
+	'identity': 'fill'
 
 	'connection': 'myLocalMySql'
 

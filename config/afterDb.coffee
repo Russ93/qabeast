@@ -1,7 +1,13 @@
-async = require("async")
-fs = require('fs')
-path = require('path')
-fixtures = require("./fixtures")
+# this file runs after the database connection has been established
+async = require "async"
+fs = require 'fs'
+path = require 'path'
+
+
+
+
+# Made to force data to the database from the fixtures.coffee
+fixtures = require "./fixtures"
 
 async.eachSeries Object.keys(fixtures),
 (f, done) ->
@@ -12,15 +18,18 @@ async.eachSeries Object.keys(fixtures),
 			fix = fixtures[f].splice(0,1)[0]
 			
 			Models[f]
-				.findOrCreate fix,
-					fix
+				.findOrCreate fix, fix
 				.exec (err) ->
-					console.log err
 					next()
 		,done)
 ,() ->
 
+	app.get "*", app.policies.shortcuts
+
 	fs.readdirSync("./controllers").forEach (file) ->
 		
 		if config.config.fileTypes.indexOf( path.extname file ) > -1
-			require "../controllers/" + file
+			app.use "/" + path.basename(file, path.extname(file)), require "../controllers/" + file
+
+	app.get "/*", (req, res) ->
+		res.send '404'

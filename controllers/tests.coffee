@@ -1,28 +1,31 @@
-Browser = require("zombie")
-async = require("async")
-assert = require("assert")
+Browser = require "zombie"
+async = require "async"
+assert = require "assert"
+route = require('express').Router()
 
 # Load the page from localhost
 browser = new Browser()
 
-Models.test
-	.findOrCreate { 'test': "Log In and Buy Something" },
-		'test': "Log In and Buy Something",
-		'visit': "http://localhost:3000/",
-	.populate 'commands'
-	.exec (err, test) ->
+route.post '/runTest', (req, res) ->
+	Models.test
+		.findOrCreate { 'id': req.body.id },
+			'test': "Log In and Buy Something",
+			'visit': "http://localhost:3000/",
+		.populate 'commands'
+		.populate 'outcomes'
+		.exec (err, test) ->
 
-		Models.command
-			.find
-				'id': [ x.id for x in test.commands ][0]
-			.populate 'actions'
-			.populate 'fills'
-			.populate 'selects'
-			.sort 'step asc'
-			.exec (err, commands) ->
-				
-				test.commands = commands
-				run(test)
+			Models.command
+				.find
+					'id': [ x.id for x in test.commands ][0]
+				.populate 'actions'
+				.populate 'fills'
+				.populate 'selects'
+				.sort 'step asc'
+				.exec (err, commands) ->
+					
+					test.commands = commands
+					run test
 
 
 run = (test) ->
@@ -39,28 +42,51 @@ run = (test) ->
 				# for loops through the fill
 				for fill in cmd.fills
 					
-					console.log fill
-					console.log "Filling", fill.selector, "with", fill.data
-					
-					promise.fill fill.selector, fill.data
+					if fill.selector and fill.data
+						
+						console.log fill
+						console.log "Filling", fill.selector, "with", fill.data
+						
+						promise.fill fill.selector, fill.data
 
 				# for loops through the select
 				for select in cmd.selects
-					console.log "Selecting", select.selector, "with", select.data
-					promise.select select.selector, select.data
+					
+					if select.selector and select.data
+						
+						console.log "Selecting", select.selector, "with", select.data
+						promise.select select.selector, select.data
 
 				# loops through the actions
 				async.eachSeries cmd.actions,
 					(action, next) ->
-
-						console.log "Action",action.action, "on", action.selector
-						# accesses the promise
-						promise[action.action] action.selector, next
+						
+						if action.action and action.selector
+							
+							console.log "Action", action.action, "on", action.selector
+							# accesses the promise
+							promise[action.action] action.selector, next
+						
+						else
+							
+							next()
 					
 					,done
 
 			, (err) ->
-				if err
-					console.log "Error:", err
+				fails = []
 				
-				console.log "done"
+				for outcome in test.outcomes
+					
+					if browser.text(outcome.selector) isnt outcome.data
+						
+						fails.push browser.text(outcome.selector), outcome.data
+				
+				if fails.length
+					console.log "############### TEST FAILED ###############"
+				
+				else
+					console.log "############### TEST PASSED ###############"
+
+
+module.exports = route

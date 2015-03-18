@@ -1,13 +1,7 @@
 module.exports =
 
 	# Define a custom table name
-	'tableName': 'select'
-
-	# Set schema true/false for adapters that support schemaless
-	'schema': true
-
-	# Define an adapter to use
-	'adapter': 'mysql'
+	'identity': 'select'
 
 	'connection': 'myLocalMySql'
 

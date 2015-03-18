@@ -40,8 +40,13 @@
   ],
   "dependencies": {
     "async": "*",
-    "better-require": "0.0.3",
-    "coffee-script": "^1.9.1",
+    "better-require": "*",
+    "body-parser": "*",
+    "coffee-script": "*",
+    "connect-redis": "^2.2.0",
+    "ejs-mate": "*",
+    "express": "*",
+    "express-session": "*",
     "sails-mysql": "*",
     "waterline": "*",
     "zombie": "*"

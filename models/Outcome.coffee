@@ -1,7 +1,7 @@
-module.exports = 
+module.exports =
 
 	# Define a custom table name
-	'identity': 'action'
+	'identity': 'outcome'
 
 	'connection': 'myLocalMySql'
 
@@ -14,20 +14,20 @@ module.exports =
 			'primaryKey': true
 			'unique': true
 
-		'command_id':
-			'model': 'command'
-		
-		'command':
-			'columnName': 'command_id'
-			'type': 'integer'
-			'foreignKey': true
-			'references': 'command'
-			'on': 'id'
-		
 		'selector':
 			'type': 'string'
 			'required': true
 		
-		'action':
+		'data':
 			'type': 'string'
 			'required': true
+		
+		'test_id':
+			'model': 'test'
+
+		'test':
+			'columnName': 'test_id'
+			'type': 'integer'
+			'foreignKey': true
+			'references': 'test'
+			'on': 'id'
