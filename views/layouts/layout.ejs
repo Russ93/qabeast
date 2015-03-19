@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Meta -->
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>QA BEAST!</title>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
+
+		<!-- JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>		
+		
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<span class="navbar-brand" href="#">
+						QA Beast
+					</span>
+				<% if(session.user){ %>
+					<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+				<% } else { %>
+					
+				<% } %>
+				</div>
+			</div>
+		</nav>
+	<% if(session.error){ %>
+		<div class="alert alert-danger col-xs-12 text-center errors" role="alert"><%=session.error %></div>
+		<% delete session.error; %>
+	
+	<% } else if(session.success){ %>
+		
+		<div class="alert alert-success col-xs-12 text-center errors" role="alert"><%=session.success %></div>
+		<% delete session.success; %>
+	<% } %>
+		
+		<div class="wrapper">
+			<%- body %>
+		</div>
+	
+	</body>
+
+
+</html>
