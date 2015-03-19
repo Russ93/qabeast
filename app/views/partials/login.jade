@@ -1,0 +1,19 @@
++modal-sm("login-modal")
+	.modal-header
+		button.close(type="button" data-dismiss="modal" aria-label="Close")
+			span(aria-hidden="true") &times;
+		h4.modal-title Login
+
+	.modal-body
+		form(action="/user/login" method="POST")
+
+			.form-group
+				label Username
+				input.form-control(name="username" type="text" placeholder="Derpinstein")
+			
+			.form-group
+				label Password
+				input.form-control(name="password" type="text" placeholder="Oooh Soo Secret")
+			
+			.form-group
+				button.btn.btn-block.btn-primary(type="submit") Login

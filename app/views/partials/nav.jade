@@ -1,0 +1,19 @@
+nav.navbar.navbar-default.navbar-static-top
+
+	.container-fluid
+
+		.navbar-header
+
+			span.navbar-brand(href="#")
+				| QA Beast
+		
+		if session.user
+
+			p.navbar-text.navbar-right
+				| Signed in as 
+				
+				a.navbar-link(href="#")
+					| session.user.username
+		else
+			button.btn.btn-default.navbar-btn.pull-right(type="button" data-toggle="modal" data-target="#login-modal")
+				| Sign in

@@ -1,0 +1,24 @@
+extends layouts/layout
+
+block content
+	.cta-bg
+	
+	section.col-xs-12
+		
+		article.well.col-xs-6.col-xs-offset-3
+
+			h3 Sign Up!
+
+			form(action="/user/signup" method="POST")
+				
+				.form-group
+					label Username
+					input.form-control(name="username" type="text" placeholder="Derpinstein")
+				
+				.form-group
+					label Password
+					input.form-control(name="password" type="text" placeholder="Oooh Soo Secret")
+				
+				.form-group
+					button.btn.btn-block.btn-primary(type="submit") Sign Up
+

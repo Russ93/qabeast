@@ -23,7 +23,7 @@ orm = new Waterline()
 fs.readdirSync "./models"
 .forEach (file) ->
 	if config.config.fileTypes.indexOf( path.extname( file ) ) > -1
-		orm.loadCollection( Waterline.Collection.extend( require("./models/" + file) ) )
+		orm.loadCollection Waterline.Collection.extend require "./models/" + file
 
 require './config/use'
 

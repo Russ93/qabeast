@@ -27,6 +27,9 @@
     "ejs-mate": "*",
     "express": "*",
     "express-session": "*",
+    "jade": "^1.9.2",
+    "js-sha256": "^0.2.3",
+    "node-uuid": "^1.4.3",
     "sails-mysql": "*",
     "waterline": "*",
     "zombie": "*"
