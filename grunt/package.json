@@ -1,0 +1,28 @@
+{
+	"name": "QABeast",
+	"version": "0.14.1",
+	"authors": [
+		{
+			"name": "Russell Schlup",
+			"title": "Senior Web Developer",
+			"email": "portlight.rschlup@gmail.com"
+		},
+		{
+			"name": "Nicole Carvalho",
+			"title": "Front-End Developer",
+			"email": "portlight.ncarvalho@gmail.com"
+		},
+		{
+			"name": "Jairo Jurado",
+			"title": "Senior Web Developer",
+			"email": "portlight.jjurado@gmail.com"
+		}
+	],
+	"dependencies": {
+		"grunt-cli": "*",
+	    "grunt-contrib-coffee": "*",
+	    "grunt-contrib-watch": "*",
+	    "grunt-sass": "*",
+	    "grunt-shell": "*"
+	}
+}

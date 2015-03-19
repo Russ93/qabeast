@@ -3,18 +3,12 @@
 ###########################################################
 express = require 'express'
 session = require 'express-session'
-RedisStore = require('connect-redis')(session)
+# RedisStore = require('connect-redis')(session)
 bodyParser = require 'body-parser'
-ejs = require 'ejs-mate'
 bodyParser = require 'body-parser'
-# Set View Engine to EJS
-app.engine 'ejs', ejs
 
-# set templating engine to ejs
-app.set 'view engine', 'ejs'
+app.set 'view engine', 'jade'
 app.use '/views', express.static '/views'
-app.use '/views/about', express.static '/views/about'
-app.use '/views/careers', express.static '/views/careers'
 app.use bodyParser.json() # for parsing application/json
 app.use bodyParser.urlencoded { 'extended': true } # for parsing application/x-www-form-urlencoded
 
@@ -23,6 +17,8 @@ app.use '/assets', express.static './assets'
 
 app.use bodyParser.json() # for parsing application/json
 app.use bodyParser.urlencoded { 'extended': true } # for parsing application/x-www-form-urlencoded
+
+app.locals.pretty = true
 
 # Sessions
 app.use session {

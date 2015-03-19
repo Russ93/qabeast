@@ -14,7 +14,7 @@ module.exports =
 	'connections':
 
 		'myLocalMySql':
-			'adapter': 'mysql'
+			'adapter'	: 'mysql'
 			'host'		: 'localhost'
 			'port'		: 8889
 			'user' 		: 'root'
